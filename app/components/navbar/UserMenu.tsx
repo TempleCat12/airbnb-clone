@@ -4,10 +4,11 @@ import { AiOutlineMenu } from "react-icons/ai";
 
 import MenuItem from './MenuItem';
 import Image from 'next/image';
+import useLoginModal from '@/app/hooks/useLoginModal';
 
 const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const loginModal = useLoginModal();
   return (
     <div className='relative flex flex-row gap-4 items-center'>
       <button className='
@@ -44,7 +45,8 @@ const UserMenu = () => {
       {isOpen && 
         <div className='absolute right-0 top-14 flex flex-col cursor-pointer shadow-md rounded-xl w-[40vw] md:w-3/4 bg-white overflow-hidden text-md py-4'>
           <>
-            <MenuItem label='Login' onClick={()=>{}}/>
+            <MenuItem label='Login' onClick={loginModal.onOpen}
+            />
             <MenuItem label='Logout' onClick={()=>{}}/>
           </>
         </div>
